@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
         User existingUser = entityManager.find(User.class, id);
         if (existingUser != null) {
             existingUser.setFirstName(user.getFirstName());
-            existingUser.setFirstName(user.getLastName());
+            existingUser.setLastName(user.getLastName());
             existingUser.setEmail(user.getEmail());
             entityManager.merge(existingUser);
         }
