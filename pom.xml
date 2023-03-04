@@ -9,7 +9,9 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <spring.version>6.0.5</spring.version>
+        <spring.version>5.3.25</spring.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -37,7 +39,6 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.6.15.Final</version>
-            <type>pom</type>
         </dependency>
 
         <dependency>
@@ -58,40 +59,22 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.7.1</version>
+        </dependency>
     </dependencies>
     <build>
-<!--        <pluginManagement>-->
-<!--            <plugins>-->
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-war-plugin</artifactId>-->
-<!--                    <version>2.4</version>-->
-<!--                    <configuration>-->
-<!--                        <warSourceDirectory>src/webapp</warSourceDirectory>-->
-<!--                        <warName>spring_mvc</warName>-->
-<!--                        <failOnMissingWebXml>false</failOnMissingWebXml>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
-<!--            </plugins>-->
-<!--        </pluginManagement>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>19</source>-->
-<!--                    <target>19</target>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
         <finalName>PP_2_3_1_spring</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>

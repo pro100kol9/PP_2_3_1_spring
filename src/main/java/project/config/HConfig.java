@@ -1,5 +1,6 @@
 package project.config;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -18,7 +19,7 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan("project")
+@EnableJpaRepositories("project.dao")
 public class HConfig {
 
     @Autowired
@@ -38,16 +39,18 @@ public class HConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(getDataSource());
-        entityManager.setPackagesToScan("package.model");
+        entityManager.setPackagesToScan("project.model");
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties props = new Properties();
         props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        props.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         entityManager.setJpaProperties(props);
 
         return entityManager;
     }
+
 
     @Bean
     public JpaTransactionManager transactionManager() {

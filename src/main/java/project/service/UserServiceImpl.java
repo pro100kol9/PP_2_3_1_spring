@@ -9,11 +9,11 @@ import project.model.User;
 import java.util.List;
 
 @Service
-public class UserSeviceImpl implements UserService {
+public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Autowired
-    public UserSeviceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
